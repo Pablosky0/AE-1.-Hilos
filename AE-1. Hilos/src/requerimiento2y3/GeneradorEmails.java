@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+//Creamos un generador de emails random que a base de ArrayLit cogera un elemento con un numero aleatorio y los ira combinando para crear los emails
 public class GeneradorEmails {
 	
 	public Email generarEmail() {

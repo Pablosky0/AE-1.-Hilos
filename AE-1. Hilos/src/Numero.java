@@ -1,4 +1,4 @@
-
+//Creamos el objeto numero donde se guardaran los datos del numero
 public class Numero {
 	private long numero;
 	private boolean primo;
@@ -13,6 +13,7 @@ public class Numero {
 		this.hilo = hilo;
 	}
 
+	//Sobrescribimos el metodo toString para que nos sace por pantalla los datos que queremos.	
 	@Override
 	public String toString() {
 		if (primo == true ) {

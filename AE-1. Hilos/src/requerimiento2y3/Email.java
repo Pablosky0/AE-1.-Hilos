@@ -1,5 +1,6 @@
 package requerimiento2y3;
 
+//Creamos el objeto Email con sus contructores, getters y setters
 public class Email {
 	private int id;
 	private String destinatario;
@@ -59,7 +60,8 @@ public class Email {
 	public void setCuerpo(String cuerpo) {
 		this.cuerpo = cuerpo;
 	}
-
+	
+	//Sobrescribimos el metodo toString para que nos saque por pantalla lo que queremos
 	@Override
 	public String toString() {
 		return "email " + id + ", destinatario=" + destinatario + ", remitente=" + remitente + ", asunto=" + asunto
