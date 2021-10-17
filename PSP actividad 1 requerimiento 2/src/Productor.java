@@ -6,8 +6,8 @@ public class Productor extends Thread {
     private Buffer bufferEmails;
 
     /*
-     * Constructor del productor. Tiene un parametro a traves del cual se podrá referenciar
-     * el buffer general donde se almacenaran los Email que se envien.  
+     * Constructor del productor. Tiene un parametro, a traves del cual se podrá referenciar
+     * el buffer general, donde se almacenaran los Email que se envien.  
      */
     public Productor(Buffer bufferEmails) {
         super();
@@ -121,10 +121,10 @@ public class Productor extends Thread {
         int indice;
 
         /*
-         *  Para iteracion del bucle (que se repite 10 veces) se genera un número
-         *  aleatorio que nos indexara el email que queremos mandar.
-         *  Una vez enviado el email al buffer esperamos medio segundo para realizar
-         *  otra acción.
+         *  Para cada iteracion del bucle for (repite 10 veces):
+         *  	se genera un número aleatorio que nos indexara el email.
+         *   	envia el email al buffer.
+         *   	espera medio segundo para realizar otra acción.
          */
         for (i=0;i<10;i++) {
             indice = (int) (Math.random() * listaEmails.size() - 1);

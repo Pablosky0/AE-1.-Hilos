@@ -3,8 +3,8 @@ public class Consumidor extends Thread {
     
     private Buffer bufferEmails;
     /*
-     * Constructor del Consumidor. Tiene un parametro a traves del cual se podrá referenciar
-     * el buffer general donde se almacenan los Email que se reciben.  
+     * Constructor del Consumidor. Tiene un parametro, a traves del cual se podrá referenciar
+     * el buffer general, donde se almacenan los Email que se reciben.  
      */
     public Consumidor(Buffer bufferEmails) {
         super();
@@ -31,7 +31,7 @@ public class Consumidor extends Thread {
          * En este bucle recogemos los correos que esten en el buffer de Emails.
          * Este bucle seguirá hasta que el buffer nos entrege un Emails nulo, esto
          * nos indicara que el buffer no ofrecera mas emails, por lo cual, no es
-         * necesario estar esperando un nuevo email.
+         * necesario estar esperando un nuevo emails.
          * Cuando nos entrega una Email que no sea nulo, se presentara por pantalla. 
          */
         salirBucle = false;

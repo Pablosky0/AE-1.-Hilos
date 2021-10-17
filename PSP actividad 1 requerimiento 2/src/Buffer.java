@@ -1,5 +1,3 @@
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -18,21 +16,6 @@ public class Buffer {
         buffer = new LinkedList<>();
     }
 
-    /*
-     * funcion que determina que se ha terminado de trabajar
-     */
-    public synchronized boolean terminado() {
-    	boolean resultado;
-    	
-    	resultado = false;
-    	if (contador > 29) {
-    		if (buffer.size() == 0) {
-    			resultado = true;
-    		}
-    	}
-    	return resultado;
-    }
-    
     /*
      * Funcion que recibe los emails de los productores
      */
@@ -53,8 +36,10 @@ public class Buffer {
 		/*
 		 * Cuando se encuentra un espacio disponible en la lista buffer se introduce
 		 * un nuevo correo.
-		 * El elemento condicional cumple con el requisito 2: si el reminente es pikachu@gmail.com
-		 * no se envia el correo mostrando en su lugar un mensaje 
+		 * El elemento condicional cumple con el requisito 2: 
+		 *		si el reminente es pikachu@gmail.com no se envia el correo
+		 *		mostrando en su lugar un mensaje
+		 * Nota: el contador cuenta el número de emails procesados.
 		 */
 		this.contador++;
         if (correo.getReminente() != "pikachu@gmail.com") {
@@ -64,9 +49,7 @@ public class Buffer {
 
         }
         
-        /*
-         *  Se notifica a los hilos bloqueados que ha ya terminado de trabajar con la lista
-         */
+        // Se notifica a los hilos bloqueados que ha ya terminado de trabajar con la lista
 		notify();
 	}
 	
@@ -77,7 +60,7 @@ public class Buffer {
 
 		/*
 		 * Si se ha terminado de trabajar se envia un email nulo
-		 * para que el consumidor no se quede colgado esperando un Email 
+		 * para que los consumidores seban que ya se ha terminado de enviar Emails
 		 */
 		if (this.terminado() == true) {return null;}
 		
@@ -94,22 +77,31 @@ public class Buffer {
 			}
 		}
 
-		/*
-		 * Se saca un Email del buffer y se establece la hora a la que se envia el email
-		 */
+		// Se recoge un Email del buffer
 		Emails mensaje = buffer.poll();
 
-        /*
-         *  Se notifica a los hilos bloqueados que ha ya terminado de trabajar con la lista
-         */
+        // Se notifica a los hilos bloqueados que ha ya terminado de trabajar con la lista
 		notify();
 
-		/*
-		 * se retorna el Email sacado del buffer
-		 */
+		// se retorna el Email recogido
 		return mensaje;
 		
 	}
 	
+    /*
+     * funcion que determina que el buffer ha terminado de trabajar
+     */
+    public synchronized boolean terminado() {
+    	boolean resultado;
+    	
+    	resultado = false;
+    	if (contador > 29) {
+    		if (buffer.size() == 0) {
+    			resultado = true;
+    		}
+    	}
+    	return resultado;
+    }
+    
 
 }
