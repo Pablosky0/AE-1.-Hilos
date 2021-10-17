@@ -60,7 +60,7 @@ public class ResultadoPrimo {
 
 	@Override
 	public String toString() {
-		return "ResultadoPrimo [numero=" + numero + ", tiempoEmpleado=" + tiempoEmpleado + "ms, numeroDivisible="
+		return "ResultadoPrimo [numero=" + numero + ", tiempoEmpleado=" + tiempoEmpleado + "ms, numero Divisor="
 				+ numeroDivisible + ", nombreHilo=" + nombreHilo + ", es_primo=" + es_primo + "]";
 	}
 

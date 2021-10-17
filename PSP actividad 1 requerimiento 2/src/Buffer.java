@@ -37,16 +37,15 @@ public class Buffer {
 		 * Cuando se encuentra un espacio disponible en la lista buffer se introduce
 		 * un nuevo correo.
 		 * El elemento condicional cumple con el requisito 2: 
-		 *		si el reminente es pikachu@gmail.com no se envia el correo
+		 *		si el destinatario es pikachu@gmail.com no se envia el correo
 		 *		mostrando en su lugar un mensaje
 		 * Nota: el contador cuenta el número de emails procesados.
 		 */
 		this.contador++;
-        if (correo.getReminente() != "pikachu@gmail.com") {
+        if (correo.getDestinatario() != "pikachu@gmail.com") {
 		    buffer.offer(correo);
         } else {
-            System.out.println("Correo a pikachu@gmail.com no enviado.");
-
+            System.out.println("Correo a pikachu@gmail.com no se envia.");
         }
         
         // Se notifica a los hilos bloqueados que ha ya terminado de trabajar con la lista
